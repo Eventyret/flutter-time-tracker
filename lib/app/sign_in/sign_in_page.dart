@@ -32,12 +32,10 @@ class SignInPage extends StatelessWidget {
           SizedBox(height: 8.0),
           RaisedButton(
             child: Text('Sign in with Google'),
-            onPressed: _signInWithGoogle,
+            onPressed: () {},
           ),
         ],
       ),
     );
   }
-
-  void _signInWithGoogle() {}
 }

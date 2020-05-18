@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
 
 class BuildContent extends StatelessWidget {
   final Color color;
   final double height;
   const BuildContent({
-    Key key, this.color, this.height,
+    Key key,
+    this.color,
+    this.height,
   }) : super(key: key);
 
   @override
@@ -16,10 +17,12 @@ class BuildContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            color: Colors.orange,
-            child: SizedBox(
-              height: 100.0,
+          Text(
+            'Sign in',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 32.0,
+              fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(height: 8.0),

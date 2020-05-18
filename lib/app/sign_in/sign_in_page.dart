@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'build_content.dart';
 
 class SignInPage extends StatelessWidget {
   @override
@@ -11,8 +10,28 @@ class SignInPage extends StatelessWidget {
         ),
         elevation: 2.0,
       ),
-      body: BuildContent(),
+      body: _buildContent(),
+    );
+  }
+
+  Padding _buildContent() {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Text(
+            'Sign in',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 32.0,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: 8.0),
+        ],
+      ),
     );
   }
 }
-

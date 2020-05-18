@@ -47,6 +47,15 @@ class SignInPage extends StatelessWidget {
             color: Color(0xFF334D92),
             onPressed: () {},
           ),
+          SizedBox(
+            height: 8.0,
+          ),
+          SignInButton(
+            text: 'Sign in with Email',
+            textColor: Colors.white,
+            color: Colors.teal[700],
+            onPressed: () {},
+          ),
         ],
       ),
     );

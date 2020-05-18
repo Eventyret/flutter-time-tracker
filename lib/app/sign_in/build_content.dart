@@ -10,10 +10,11 @@ class BuildContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
+    return Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             color: Colors.orange,
@@ -21,12 +22,14 @@ class BuildContent extends StatelessWidget {
               height: 100.0,
             ),
           ),
+          SizedBox(height: 8.0),
           Container(
             color: Colors.red,
             child: SizedBox(
               height: 100.0,
             ),
           ),
+          SizedBox(height: 8.0),
           Container(
             color: Colors.purple,
             child: SizedBox(

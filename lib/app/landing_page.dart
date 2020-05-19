@@ -12,7 +12,10 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   FirebaseUser _user;
 
-  void _updateUser(FirebaseUser user) {}
+  void _updateUser(FirebaseUser user) {
+    print("user us ${user.uid}");
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_user == null) {

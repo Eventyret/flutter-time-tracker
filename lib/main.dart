@@ -9,8 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Time Tracker',
-      theme: ThemeData(primarySwatch: Colors.indigo),
+      title: 'Fairytales Time Tracker',
+      theme: ThemeData(primarySwatch: Colors.pink),
       home: SignInPage()
     );
   }

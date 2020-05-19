@@ -13,7 +13,9 @@ class _LandingPageState extends State<LandingPage> {
   FirebaseUser _user;
 
   void _updateUser(FirebaseUser user) {
-    print("user us ${user.uid}");
+    setState(() {
+      _user = user;
+    });
   }
 
   @override

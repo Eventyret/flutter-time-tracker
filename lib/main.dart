@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fairytales Time Tracker',
       theme: ThemeData(primarySwatch: Colors.pink),
-      home: LandingPage(auth: Auth(),)
+      home: LandingPage(
+        auth: Auth(),
+      ),
     );
   }
 }

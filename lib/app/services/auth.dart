@@ -1,15 +1,29 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+
+class User {
+  User({@required this.uid});
+
+  final String uid;
+}
 
 class Auth {
   final _firebaseAuth = FirebaseAuth.instance;
-  
-  Future<FirebaseUser> currentUser() async {
-    return await _firebaseAuth.currentUser();
+  User _userFromFirebase(FirebaseUser user) {
+    if (user == null) {
+      return null;
+    }
+    return User(uid: user.uid);
   }
 
-  Future<FirebaseUser> signInAnonymously() async {
+  Future<User> currentUser() async {
+    final user = await _firebaseAuth.currentUser();
+    return _userFromFirebase(user);
+  }
+
+  Future<User> signInAnonymously() async {
     final authResults = await _firebaseAuth.signInAnonymously();
-    return authResults.user;
+    return _userFromFirebase(authResults.user);
   }
 
   Future<void> signOut() async {

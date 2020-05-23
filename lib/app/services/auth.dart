@@ -11,6 +11,7 @@ class User {
 abstract class AuthBase {
   Stream<User> get onAuthStateChanged;
   Future<User> currentUser();
+  Future<User> signInWithGoogle() 
   Future<User> signInAnonymously();
   Future<void> signOut();
 }
@@ -43,10 +44,10 @@ class Auth implements AuthBase {
 
   @override
   Future<User> signInWithGoogle() async {
-    GoogleSignIn googleSignIn = GoogleSignIn();
-    GoogleSignInAccount googleAccount = await googleSignIn.signIn();
+    final  googleSignIn = GoogleSignIn();
+    final googleAccount = await googleSignIn.signIn();
     if (googleAccount != null) {
-      GoogleSignInAuthentication googleAuth =
+      final googleAuth =
           await googleAccount.authentication;
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
         final authResult = await _firebaseAuth.signInWithCredential(

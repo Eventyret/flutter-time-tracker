@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class User {
   User({@required this.uid});
@@ -22,7 +24,7 @@ class Auth implements AuthBase {
     return User(uid: user.uid);
   }
 
-@override
+  @override
   Stream<User> get onAuthStateChanged {
     return _firebaseAuth.onAuthStateChanged.map(_userFromFirebase);
   }
@@ -37,6 +39,24 @@ class Auth implements AuthBase {
   Future<User> signInAnonymously() async {
     final authResults = await _firebaseAuth.signInAnonymously();
     return _userFromFirebase(authResults.user);
+  }
+
+  @override
+  Future<User> signInWithGoogle() async {
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    GoogleSignInAccount googleAccount = await googleSignIn.signIn();
+    if (googleAccount != null) {
+      GoogleSignInAuthentication googleAuth =
+          await googleAccount.authentication;
+      final authResult = await _firebaseAuth.signInWithCredential(
+        GoogleAuthProvider.getCredential(
+            idToken: googleAuth.idToken, accessToken: googleAuth.accessToken),
+      );
+      return _userFromFirebase(authResult.user);
+    } else {
+      throw PlatformException(
+          code: 'ERROR_ABORTED_BY_USER', message: 'Sign in aborted by user');
+    }
   }
 
   @override

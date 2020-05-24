@@ -63,16 +63,6 @@ class SignInPage extends StatelessWidget {
           SizedBox(
             height: 8.0,
           ),
-          SocialSignInButton(
-            assetName: 'assets/images/facebook-logo.png',
-            text: 'Sign in with Facebook',
-            textColor: Colors.white,
-            color: Color(0xFF334D92),
-            onPressed: () {},
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
           SignInButton(
             text: 'Sign in with Email',
             textColor: Colors.white,

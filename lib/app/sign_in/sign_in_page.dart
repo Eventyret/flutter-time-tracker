@@ -63,20 +63,10 @@ class SignInPage extends StatelessWidget {
           SizedBox(
             height: 8.0,
           ),
-          SocialSignInButton(
-            assetName: 'assets/images/facebook-logo.png',
-            text: 'Sign in with Facebook',
-            textColor: Colors.white,
-            color: Color(0xFF334D92),
-            onPressed: () {},
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
           SignInButton(
             text: 'Sign in with Email',
             textColor: Colors.white,
-            color: Colors.teal[700],
+            color: Color(0xFF142338),
             onPressed: () => _signInWithEmail(context),
           ),
           SizedBox(
@@ -95,8 +85,8 @@ class SignInPage extends StatelessWidget {
           ),
           SignInButton(
             text: 'Go anonymous',
-            textColor: Colors.black,
-            color: Colors.lime[300],
+            textColor: Colors.white,
+            color: Colors.green,
             onPressed: _signInAnonymously,
           ),
         ],

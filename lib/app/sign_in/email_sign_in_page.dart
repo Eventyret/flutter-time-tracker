@@ -12,7 +12,10 @@ class EmailSignInPage extends StatelessWidget {
         ),
         elevation: 2.0,
       ),
-      body: _buildContent(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Card(child: _buildContent()),
+      ),
       backgroundColor: Colors.grey[200],
     );
   }

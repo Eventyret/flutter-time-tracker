@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:time_tracker/common/form_submit_button.dart';
 
 class EmailSignInForm extends StatelessWidget {
-  const EmailSignInForm({Key key}) : super(key: key);
-  
-  void _submit() {
-    
-  }
+ 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  void _submit() {}
 
   List<Widget> _buildChildren() {
     return [
       TextField(
+        controller: _emailController,
         decoration: InputDecoration(
           labelText: 'Email',
           hintText: 'test@test.com',
@@ -20,6 +20,7 @@ class EmailSignInForm extends StatelessWidget {
         height: 8.0,
       ),
       TextField(
+        controller: _passwordController,
         decoration: InputDecoration(labelText: 'Password'),
         obscureText: true,
       ),

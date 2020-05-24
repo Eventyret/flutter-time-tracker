@@ -3,6 +3,10 @@ import 'package:time_tracker/common/form_submit_button.dart';
 
 class EmailSignInForm extends StatelessWidget {
   const EmailSignInForm({Key key}) : super(key: key);
+  
+  void _submit() {
+    
+  }
 
   List<Widget> _buildChildren() {
     return [
@@ -24,7 +28,7 @@ class EmailSignInForm extends StatelessWidget {
       ),
       FormSubmitButton(
         text: 'Sign In',
-        onPressed: () {},
+        onPressed: _submit,
       ),
       SizedBox(
         height: 8.0,

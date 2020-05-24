@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:time_tracker/app/services/auth.dart';
 import 'package:time_tracker/app/sign_in/email_sign_in_page.dart';
 import 'package:time_tracker/app/sign_in/sign_in_button.dart';
+import '../../constants.dart';
 import 'social_sign_in_button.dart';
 
 class SignInPage extends StatelessWidget {
@@ -66,7 +67,7 @@ class SignInPage extends StatelessWidget {
           SignInButton(
             text: 'Sign in with Email',
             textColor: Colors.white,
-            color: Color(0xFF142338),
+            color: kPrimaryColor,
             onPressed: () => _signInWithEmail(context),
           ),
           SizedBox(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker/app/landing_page.dart';
+import 'package:time_tracker/constants.dart';
 import 'app/services/auth.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fairytales Time Tracker',
       theme: ThemeData(
-        primaryColor: Color(0xFF142338),
+        primaryColor: kPrimaryColor,
       ),
       home: LandingPage(
         auth: Auth(),

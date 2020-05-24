@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker/common/custom_raised_button.dart';
+import 'package:time_tracker/constants.dart';
 
 class FormSubmitButton extends CustomRaisedButton {
   FormSubmitButton({
@@ -11,7 +12,7 @@ class FormSubmitButton extends CustomRaisedButton {
             style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
           height: 44.0,
-          color: Colors.indigo,
+          color:kPrimaryColor,
           borderRadius: 4.0,
           onPressed: onPressed,
         );

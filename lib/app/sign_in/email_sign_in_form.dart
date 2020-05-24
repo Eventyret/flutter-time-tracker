@@ -25,6 +25,8 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
           ? EmailSignInFormType.register
           : EmailSignInFormType.signIn;
     });
+    _emailController.clear();
+    _passwordController.clear();
   }
 
   List<Widget> _buildChildren() {

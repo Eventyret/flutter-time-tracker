@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fairytales Time Tracker',
-      theme: ThemeData(primarySwatch: Colors.pink),
+      theme: ThemeData(
+        primaryColor: Color(0xFF142338),
+      ),
       home: LandingPage(
         auth: Auth(),
       ),

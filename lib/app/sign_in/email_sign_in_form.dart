@@ -19,6 +19,14 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
     );
   }
 
+  void _toggleFormType() {
+    setState(() {
+      _formType = _formType == EmailSignInFormType.signIn
+          ? EmailSignInFormType.register
+          : EmailSignInFormType.signIn;
+    });
+  }
+
   List<Widget> _buildChildren() {
     final primaryText = _formType == EmailSignInFormType.signIn
         ? 'Sign In'
@@ -53,8 +61,8 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         height: 8.0,
       ),
       FlatButton(
-        onPressed: () {},
         child: Text(secondaryText),
+        onPressed: _toggleFormType,
       ),
     ];
   }

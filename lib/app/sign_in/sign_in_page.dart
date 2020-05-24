@@ -28,8 +28,12 @@ class SignInPage extends StatelessWidget {
       backgroundColor: Colors.grey[200],
     );
   }
+  
+  void _signInWithEmail(BuildContext context) {
+    
+  }
 
-  Padding _buildContent() {
+  Widget _buildContent() {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(

@@ -14,7 +14,15 @@ class EmailSignInForm extends StatelessWidget {
       TextField(
         decoration: InputDecoration(labelText: 'Password'),
         obscureText: true,
-      )
+      ),
+      RaisedButton(
+        child: Text('Sign In'),
+        onPressed: () {},
+      ),
+      FlatButton(
+        onPressed: () {},
+        child: Text('Need an account? Register'),
+      ),
     ];
   }
 

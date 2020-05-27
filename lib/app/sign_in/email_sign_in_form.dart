@@ -57,6 +57,8 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
           labelText: 'Email',
           hintText: 'test@test.com',
         ),
+        autocorrect: false,
+        keyboardType: TextInputType.emailAddress,
       ),
       SizedBox(
         height: 8.0,

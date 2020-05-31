@@ -15,6 +15,8 @@ class EmailSignInForm extends StatefulWidget {
 class _EmailSignInFormState extends State<EmailSignInForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
 
   String get _email => _emailController.text;
   String get _password => _passwordController.text;
@@ -76,6 +78,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   TextField _buildPasswordTextField() {
     return TextField(
       controller: _passwordController,
+      focusNode: _passwordFocusNode,
       decoration: InputDecoration(labelText: 'Password'),
       obscureText: true,
       textInputAction: TextInputAction.done,
@@ -85,6 +88,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   TextField _buildEmailTextField() {
     return TextField(
       controller: _emailController,
+      focusNode: _emailFocusNode,
       decoration: InputDecoration(
         labelText: 'Email',
         hintText: 'test@test.com',

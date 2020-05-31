@@ -22,7 +22,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   String get _password => _passwordController.text;
 
   EmailSignInFormType _formType = EmailSignInFormType.signIn;
-  
+
   void _submit() async {
     try {
       if (_formType == EmailSignInFormType.signIn) {
@@ -35,7 +35,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       print(e.toString());
     }
   }
-  
+
   void _emailEditingComplete() {
     FocusScope.of(context).requestFocus(_passwordFocusNode);
   }
@@ -57,6 +57,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
     final secondaryText = _formType == EmailSignInFormType.signIn
         ? 'Need an account? Register'
         : 'Have an account? Sign In';
+    bool submitEnabled = _email.isNotEmpty && _password.isNotEmpty;
     return [
       _buildEmailTextField(),
       SizedBox(
@@ -68,7 +69,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       ),
       FormSubmitButton(
         text: primaryText,
-        onPressed: _submit,
+        onPressed: submitEnabled ? _submit : null,
       ),
       SizedBox(
         height: 8.0,

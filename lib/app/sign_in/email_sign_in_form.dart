@@ -87,6 +87,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       decoration: InputDecoration(labelText: 'Password'),
       obscureText: true,
       textInputAction: TextInputAction.done,
+      onEditingComplete: _submit,
     );
   }
 

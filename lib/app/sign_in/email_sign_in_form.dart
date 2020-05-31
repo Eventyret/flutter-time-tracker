@@ -30,7 +30,6 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       _isLoading = true;
     });
     try {
-      await Future.delayed(Duration(seconds: 3)); 
       if (_formType == EmailSignInFormType.signIn) {
         await widget.auth.signInWithEmailAndPassword(_email, _password);
       } else {
@@ -39,6 +38,10 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       Navigator.of(context).pop();
     } catch (e) {
       print(e.toString());
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -65,7 +68,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         ? 'Need an account? Register'
         : 'Have an account? Sign In';
     bool submitEnabled = widget.emailValidator.isValid(_email) &&
-        widget.passwordValidator.isValid(_password);
+        widget.passwordValidator.isValid(_password) && !_isLoading;
     return [
       _buildEmailTextField(),
       SizedBox(
@@ -84,7 +87,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       ),
       FlatButton(
         child: Text(secondaryText),
-        onPressed: _toggleFormType,
+        onPressed: !_isLoading ? _toggleFormType : null,
       ),
     ];
   }
@@ -96,9 +99,9 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       controller: _passwordController,
       focusNode: _passwordFocusNode,
       decoration: InputDecoration(
-        labelText: 'Password',
-        errorText: showErrorText ? widget.invalidPasswordErrorText : null,
-      ),
+          labelText: 'Password',
+          errorText: showErrorText ? widget.invalidPasswordErrorText : null,
+          enabled: _isLoading == false),
       obscureText: true,
       textInputAction: TextInputAction.done,
       onEditingComplete: _submit,
@@ -112,10 +115,10 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       controller: _emailController,
       focusNode: _emailFocusNode,
       decoration: InputDecoration(
-        labelText: 'Email',
-        hintText: 'test@test.com',
-        errorText: showErrorText ? widget.invalidEmailErrorText : null,
-      ),
+          labelText: 'Email',
+          hintText: 'test@test.com',
+          errorText: showErrorText ? widget.invalidEmailErrorText : null,
+          enabled: _isLoading == false),
       autocorrect: false,
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,

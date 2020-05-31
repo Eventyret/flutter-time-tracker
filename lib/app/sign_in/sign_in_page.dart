@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker/app/services/auth.dart';
-import 'package:time_tracker/app/sign_in/email_sign_in_page.dart';
 import 'package:time_tracker/app/sign_in/sign_in_button.dart';
-import '../../constants.dart';
 import 'social_sign_in_button.dart';
 
 class SignInPage extends StatelessWidget {
@@ -17,6 +15,14 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  Future<void> _signInWithGoogle() async {
+    try {
+      await auth.signInWithGoogle();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,21 +32,12 @@ class SignInPage extends StatelessWidget {
         ),
         elevation: 2.0,
       ),
-      body: _buildContent(context),
+      body: _buildContent(),
       backgroundColor: Colors.grey[200],
     );
   }
 
-  void _signInWithEmail(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute<void>(
-      fullscreenDialog: true,
-      builder: (context) => EmailSignInPage(
-        auth: auth,
-      ),
-    ));
-  }
-
-  Widget _buildContent(BuildContext context) {
+  Padding _buildContent() {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
@@ -61,7 +58,7 @@ class SignInPage extends StatelessWidget {
             text: 'Sign in with Google',
             textColor: Colors.black87,
             color: Colors.white,
-            onPressed: () {},
+            onPressed: _signInWithGoogle,
           ),
           SizedBox(
             height: 8.0,
@@ -69,8 +66,8 @@ class SignInPage extends StatelessWidget {
           SignInButton(
             text: 'Sign in with Email',
             textColor: Colors.white,
-            color: kPrimaryColor,
-            onPressed: () => _signInWithEmail(context),
+            color: Colors.teal[700],
+            onPressed: () {},
           ),
           SizedBox(
             height: 8.0,
@@ -88,8 +85,8 @@ class SignInPage extends StatelessWidget {
           ),
           SignInButton(
             text: 'Go anonymous',
-            textColor: Colors.white,
-            color: Colors.green,
+            textColor: Colors.black,
+            color: Colors.lime[300],
             onPressed: _signInAnonymously,
           ),
         ],

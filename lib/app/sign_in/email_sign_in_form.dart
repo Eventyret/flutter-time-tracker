@@ -89,6 +89,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       obscureText: true,
       textInputAction: TextInputAction.done,
       onEditingComplete: _submit,
+      onChanged: (password) => _updateState(),
     );
   }
 
@@ -104,6 +105,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
       onEditingComplete: _emailEditingComplete,
+      onChanged: (email) => _updateState(),
     );
   }
 
@@ -117,5 +119,9 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         children: _buildChildren(),
       ),
     );
+  }
+
+  _updateState() {
+    setState(() {});
   }
 }

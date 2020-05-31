@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:time_tracker/app/services/auth.dart';
+import 'package:time_tracker/services/auth.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key, @required this.auth}) : super(key: key);
+  HomePage({@required this.auth});
   final AuthBase auth;
+
   Future<void> _signOut() async {
     try {
       await auth.signOut();
@@ -22,12 +23,12 @@ class HomePage extends StatelessWidget {
             child: Text(
               'Logout',
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 18.0,
+                color: Colors.white,
               ),
             ),
             onPressed: _signOut,
-          )
+          ),
         ],
       ),
     );

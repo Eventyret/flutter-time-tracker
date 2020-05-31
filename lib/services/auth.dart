@@ -11,13 +11,16 @@ class User {
 abstract class AuthBase {
   Stream<User> get onAuthStateChanged;
   Future<User> currentUser();
-  Future<User> signInWithGoogle();
   Future<User> signInAnonymously();
+  Future<User> signInWithEmailAndPassword(String email, String password);
+  Future<User> createUserWithEmailAndPassword(String email, String password);
+  Future<User> signInWithGoogle();
   Future<void> signOut();
 }
 
 class Auth implements AuthBase {
   final _firebaseAuth = FirebaseAuth.instance;
+
   User _userFromFirebase(FirebaseUser user) {
     if (user == null) {
       return null;
@@ -38,17 +41,31 @@ class Auth implements AuthBase {
 
   @override
   Future<User> signInAnonymously() async {
-    final authResults = await _firebaseAuth.signInAnonymously();
-    return _userFromFirebase(authResults.user);
+    final authResult = await _firebaseAuth.signInAnonymously();
+    return _userFromFirebase(authResult.user);
+  }
+
+  @override
+  Future<User> signInWithEmailAndPassword(String email, String password) async {
+    final authResult = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
+    return _userFromFirebase(authResult.user);
+  }
+
+  @override
+  Future<User> createUserWithEmailAndPassword(
+      String email, String password) async {
+    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    return _userFromFirebase(authResult.user);
   }
 
   @override
   Future<User> signInWithGoogle() async {
-    final  googleSignIn = GoogleSignIn();
+    final googleSignIn = GoogleSignIn();
     final googleAccount = await googleSignIn.signIn();
     if (googleAccount != null) {
-      final googleAuth =
-          await googleAccount.authentication;
+      final googleAuth = await googleAccount.authentication;
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
         final authResult = await _firebaseAuth.signInWithCredential(
           GoogleAuthProvider.getCredential(
